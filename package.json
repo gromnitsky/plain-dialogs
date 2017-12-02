@@ -13,7 +13,6 @@
     ],
     "author": "Alexander Gromnitsky",
     "license": "MIT",
-
     "eslintConfig": {
         "parserOptions": {
             "ecmaVersion": 2017,
@@ -59,6 +58,8 @@
                 "error"
             ]
         }
+    },
+    "devDependencies": {
+        "dialog-polyfill": "^0.4.9"
     }
-
 }

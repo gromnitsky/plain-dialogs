@@ -8,3 +8,6 @@ $(out)/$(pkg.name).js: index.mjs
 
 publish: $(out)/$(pkg.name).js
 	npm publish
+
+upload: node_modules
+	rsync -avPL --delete -e ssh node_modules/dialog-polyfill/dialog-polyfill.* test/ gromnitsky@web.sourceforge.net:/home/user-web/gromnitsky/htdocs/js/examples/plain-dialogs/
