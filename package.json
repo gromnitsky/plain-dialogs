@@ -1,0 +1,64 @@
+{
+    "name": "plain-dialogs",
+    "version": "0.0.1",
+    "description": "HTML5 dialog element based alert, confirm, prompt; modal/non-modal variants, promisified API, no fancy CSS by default",
+    "main": "index.js",
+    "keywords": [
+        "dialog",
+        "alert",
+        "confirm",
+        "prompt",
+        "modal",
+        "promises"
+    ],
+    "author": "Alexander Gromnitsky",
+    "license": "MIT",
+
+    "eslintConfig": {
+        "parserOptions": {
+            "ecmaVersion": 2017,
+            "sourceType": "module",
+            "ecmaFeatures": {
+                "impliedStrict": true
+            }
+        },
+        "env": {
+            "es6": true,
+            "browser": true,
+            "commonjs": true
+        },
+        "extends": [
+            "eslint:recommended"
+        ],
+        "rules": {
+            "no-console": [
+                "off"
+            ],
+            "no-mixed-spaces-and-tabs": [
+                "off"
+            ],
+            "no-unused-vars": [
+                "warn",
+                {
+                    "argsIgnorePattern": "^_"
+                }
+            ],
+            "eqeqeq": [
+                "error"
+            ],
+            "block-scoped-var": [
+                "warn"
+            ],
+            "default-case": [
+                "error"
+            ],
+            "dot-notation": [
+                "error"
+            ],
+            "no-throw-literal": [
+                "error"
+            ]
+        }
+    }
+
+}
