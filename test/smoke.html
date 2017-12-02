@@ -2,15 +2,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<h1>Please open Developer Tools & switch to Console</h1>
+<h2>Please open Developer Tools & switch to Console</h2>
+
+<p>The demo requires a browser w/ es6 modules support.</p>
 
 <input type='checkbox' id='css'>
 <label for='css'>Use fancy CSS</label>
 
 <ul>
   <li>
-    <button id='modal-alert'>Modal alert</button>
-    <button id='modal-alert-fancy'>Modal fancy alert</button>
+    <button id='alert-modal'>Modal alert</button>
+    <button id='alert-modal-fancy'>Modal alert w/ unescaped html & title</button>
     <button id='alert'>alert</button>
   </li>
   <li>
@@ -19,4 +21,8 @@
   </li>
 </ul>
 
-<script type="module" src="smoke.mjs"></script>
+<a href='https://github.com/gromnitsky/plain-dialogs'>
+  https://github.com/gromnitsky/plain-dialogs
+</a>
+
+<script type="module" src="smoke.js"></script>

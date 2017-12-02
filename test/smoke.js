@@ -1,11 +1,13 @@
-import * as pd from '../index.mjs'
+import * as pd from './index.js'
 
-$('#modal-alert').onclick = function() {
-    pd.alert('A modal dlg').then(console.log)
+$('#alert-modal').onclick = function() {
+    pd.alert('A modal <b>dlg</b> w/ escaped text').then(console.log)
 }
 
-$('#modal-alert-fancy').onclick = function() {
-    pd.alert('<b>Cross-site scripting</b> (<b>XSS</b>) is a type of <a href="/wiki/Computer_security">computer security</a> <a href="/wiki/Vulnerability_(computer_science)">vulnerability</a> typically found in <a href="/wiki/Web_application">web applications</a>.', {
+$('#alert-modal-fancy').onclick = function() {
+    pd.alert(`<p><b>Cross-site scripting</b> (<b>XSS</b>) is a type of <a href="/wiki/Computer_security">computer security</a> <a href="/wiki/Vulnerability_(computer_science)">vulnerability</a> typically found in <a href="/wiki/Web_application">web applications</a>.</p>
+
+<p>XSS enables attackers to inject client-side scripts into web pages viewed by other users</p>`, {
 	title: 'My Title',
 	escape: false
     }).then(console.log)
