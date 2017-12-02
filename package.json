@@ -2,7 +2,7 @@
     "name": "plain-dialogs",
     "version": "0.0.1",
     "description": "HTML5 dialog element based alert, confirm, prompt; modal/non-modal variants, promisified API, no fancy CSS by default",
-    "main": "index.js",
+    "main": "index.mjs",
     "keywords": [
         "dialog",
         "alert",
