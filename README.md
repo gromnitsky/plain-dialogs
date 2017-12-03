@@ -1,17 +1,29 @@
 # plain-dialogs
 
-HTML5 dialog element based alert/confirm/prompt; modal/non-modal
-variants, promisified API, no fancy CSS by default.
+[HTML5 dialog element](https://demo.agektmr.com/dialog/) based
+alert/confirm/prompt; modal/non-modal variants, promisified API, no
+fancy CSS by default.
 
 [Demo](http://gromnitsky.users.sourceforge.net/js/examples/plain-dialogs/smoke.html)
 
-	npm i plain-dialogs
+    npm i plain-dialogs
 
-`dist/plain-dialogs.js` is an UMD bundle. `index.mjs` is an es6
-module. Use
-[dialog-polyfil](https://github.com/GoogleChrome/dialog-polyfill) for
-non-Chromium browsers (just include .css & .js *before* plain-dialogs
-lib; you don't need to initialize anything).
+| file                    | lang  | type       | minified |
+| ----------------------- | ----- | ---------- | -------- |
+| `dist/plain-dialogs.js` | es6   | UMD        | x        |
+| `index.mjs`             | es6   | es6 module |          |
+
+Use [dialog-polyfil](https://github.com/GoogleChrome/dialog-polyfill)
+for non-Chromium browsers (just include .css & .js *before*
+plain-dialogs lib; you don't need to initialize anything).
+
+An unstyled modal alert:
+
+![](http://ultraimg.com/images/2017/12/03/nqjW.png)
+
+The same dialog after applying some CSS:
+
+![](http://ultraimg.com/images/2017/12/03/nqja.png)
 
 ## Why?
 
@@ -27,8 +39,8 @@ Firefox.
 
 Unfortunately, this means that the old sync pattern of
 
-	let r = confirm('are you sure?')
-	if (r) erase_all_the_monies()
+    let r = confirm('are you sure?')
+    if (r) erase_all_the_monies()
 
 doesn't work w/ "new" dialog elements. To ask a user we need to create
 a `<dialog>` dom node, fill it w/ the text of the question, add 2
@@ -37,12 +49,12 @@ node from the document.
 
 This is what this lib does automatically, allowing us to write:
 
-	plainDialogs.confirm('are you sure?').then(erase_all_the_monies)
+    plainDialogs.confirm('are you sure?').then(erase_all_the_monies)
 
 or
 
-	let r = await plainDialogs.confirm2('are you sure?')
-	if (r) erase_all_the_monies()
+    let r = await plainDialogs.confirm2('are you sure?')
+    if (r) erase_all_the_monies()
 
 
 ## API
@@ -52,33 +64,33 @@ hash. The default opts are:
 
 ~~~
 {
-	modal: true,
-	escape: true,
-	title: undefined
+    modal: true,
+    escape: true,
+    title: undefined
 }
 ~~~
 
 ### alert
 
-	> await plainDialogs.alert('Hi, mom!')
-	true
+    > await plainDialogs.alert('Hi, mom!')
+    true
 
-	> await plainDialogs.alert('<h1>Hi, mom!</h1>', {escape: false})
-	true
+    > await plainDialogs.alert('<h1>Hi, mom!</h1>', {escape: false})
+    true
 
 ### confirm
 
 A promise rejects on clicking "Cancel":
 
-	> try { await plainDialogs.confirm('really?') } catch (e) { console.log(`result: ${e}`) }
-	result: false
+    > try { await plainDialogs.confirm('really?') } catch (e) { console.log(`result: ${e}`) }
+    result: false
 
 ### confirm2
 
 Return a promise that always resolves. Here, a user clicks "Cancel":
 
-	> await plainDialogs.confirm2('really?')
-	false
+    > await plainDialogs.confirm2('really?')
+    false
 
 ### prompt
 
