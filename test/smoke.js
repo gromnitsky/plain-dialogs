@@ -1,7 +1,7 @@
 import * as pd from './index.js'
 
 $('#alert-modal').onclick = function() {
-    pd.alert('A modal <b>dlg</b> w/ escaped text').then(console.log)
+    pd.alert("A modal <b>dlg</b> w/ escaped text\n\n& preserved newlines").then(console.log)
 }
 
 $('#alert-modal-fancy').onclick = function() {
@@ -42,6 +42,7 @@ $('#css').onchange = function(evt) {
   border: 1px solid lightgray;
   border-radius: 3px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+  padding-top: 0.3em;
 }
 
 .b59LdZ-dlg button {

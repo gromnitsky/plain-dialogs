@@ -74,7 +74,7 @@ function escape(t) {
 	'"': '&quot;',
 	"'": '&#39;',
 	'`': '&#x60;',
-    }[char]))
+    }[char])).replace(/\n/g, '<br>')
 }
 
 function css(t) { return 'b59LdZ-dlg' + (t ? `__${t}` : '') }
