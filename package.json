@@ -13,6 +13,10 @@
     ],
     "author": "Alexander Gromnitsky",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/gromnitsky/plain-dialogs.git"
+    },
     "eslintConfig": {
         "parserOptions": {
             "ecmaVersion": 2017,
