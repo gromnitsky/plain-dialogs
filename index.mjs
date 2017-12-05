@@ -91,13 +91,16 @@ function Dialog(opt) {
     }
 }
 
-function escape(t) {
-    return String(t).replace(/[&<>"'`]/g, char => ({
-	'&': '&amp;',
-	'<': '&lt;',
-	'>': '&gt;',
-	'"': '&quot;',
-	"'": '&#39;',
-	'`': '&#x60;',
-    }[char])).replace(/\n/g, '<br>')
+function escape_html(t) {
+    return String(t === null || t === undefined ? '' : t)
+	.replace(/[&<>"'`]/g, char => ({
+	    '&': '&amp;',
+	    '<': '&lt;',
+	    '>': '&gt;',
+	    '"': '&quot;',
+	    "'": '&#39;',
+	    '`': '&#x60;',
+	}[char]))
 }
+
+function escape(t) { return escape_html(t).replace(/\n/g, '<br>') }
