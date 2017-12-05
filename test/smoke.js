@@ -28,6 +28,17 @@ $('#confirm2').onclick = function() {
     }).then(console.log)
 }
 
+$('#prompt-modal').onclick = function() {
+    pd.prompt('Діти, хто це?').then(console.log)
+}
+
+$('#prompt2').onclick = function() {
+    pd.prompt2('Діти, хто це?', 'Це їжачок.', {
+	modal: false,
+	title: 'Цікаві досліди'
+    }).then(console.log)
+}
+
 // helpers
 
 function $(q) { return document.querySelector(q) }

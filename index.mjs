@@ -57,6 +57,52 @@ export function confirm2(msg, opt) {
     return _confirm(msg, opt)
 }
 
+function _prompt(msg, def, opt) {
+    let d = Dialog(opt)
+    d.node.innerHTML = d.html(`
+<div class='${d.css("body")}'><p>
+${d.opt.escape ? escape(msg) : msg}<br>
+<input style='width: 100%' value='${escape_html(def)}'>
+</p></div>
+<div class='${d.css("footer")}'>
+  <button class='${d.css("btn--cancel")}'>Cancel</button>
+  <button class='${d.css("btn--ok")}'>OK</button>
+</div>`)
+
+    let val
+    return new Promise( (resolve, reject) => {
+	d.node.querySelector('.'+d.css("btn--cancel")).onclick = () => {
+	    val = null // because dialog#returnValue is always a string
+	    d.node.close()
+	}
+	d.node.oncancel = () => val = null // modal-only
+	d.node.querySelector('.'+d.css("btn--ok")).onclick = () => {
+	    val = d.node.querySelector('input').value
+	    d.node.close()
+	}
+	d.node.onclose = evt => {
+	    document.body.removeChild(evt.target)
+	    if (d.opt._promise_always_resolves) {
+		resolve(val)
+	    } else {
+		val === null ? reject(null) : resolve(val)
+	    }
+	}
+
+	d.show()
+    })
+}
+
+export function prompt(msg, def, opt) {
+    return _prompt(msg, def, opt)
+}
+
+export function prompt2(msg, def, opt) {
+    opt = opt || {}
+    opt._promise_always_resolves = true
+    return _prompt(msg, def, opt)
+}
+
 // Crockford-style 'say no to this'
 function Dialog(opt) {
     let opt_parse = opt => {

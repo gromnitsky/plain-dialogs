@@ -80,21 +80,29 @@ hash. The default opts are:
 
 ### confirm
 
-A promise rejects on clicking "Cancel":
+Reject a promise on clicking Cancel:
 
     > try { await plainDialogs.confirm('really?') } catch (e) { console.log(`result: ${e}`) }
     result: false
 
 ### confirm2
 
-Return a promise that always resolves. Here, a user clicks "Cancel":
+Return a promise that always resolves. Here, a user clicks Cancel:
 
     > await plainDialogs.confirm2('really?')
     false
 
 ### prompt
 
-not implemented
+Reject a promise on clicking Cancel:
+
+    > await plainDialogs.prompt('Діти, хто це?', 'Це їжачок.')
+    Uncaught (in promise) null
+
+### prompt2
+
+Return a promise that always resolves.  If a user clicks Cancel,
+resolves to null.
 
 
 ## Styling
