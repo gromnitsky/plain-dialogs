@@ -62,7 +62,7 @@ function _prompt(msg, def, opt) {
     d.node.innerHTML = d.html(`
 <div class='${d.css("body")}'><p>
 ${d.opt.escape ? escape(msg) : msg}<br>
-<input style='width: 100%' value='${escape_html(def)}'>
+<input style='width: 100%; margin-top: 0.3em;' value='${escape_html(def)}'>
 </p></div>
 <div class='${d.css("footer")}'>
   <button class='${d.css("btn--cancel")}'>Cancel</button>
