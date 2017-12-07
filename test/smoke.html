@@ -3,6 +3,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="dialog-polyfill.css">
 
+<style type="text/css">
+  body {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  #grid {
+    margin: 1em 0;
+    display: grid;
+    grid-template-columns: [alert] auto [confirm] auto [prompt] auto;
+    grid-auto-flow: row dense;
+    grid-gap: 5px;
+  }
+
+  #grid code { grid-row: 1; }
+  .alert { grid-column: alert; }
+  .confirm { grid-column: confirm; }
+  .prompt { grid-column: prompt; }
+  }
+</style>
+
 <h2>Please open Developer Tools & switch to Console</h2>
 
 <p>The demo requires a browser w/ es6 modules support (Chrome 61,
@@ -11,21 +32,21 @@ EdgeHTML 16).</p>
 <input type='checkbox' id='css'>
 <label for='css'>Use fancy CSS</label>
 
-<ul>
-  <li>
-    <button id='alert-modal'>Modal alert</button>
-    <button id='alert-modal-fancy'>Modal alert w/ unescaped html & title</button>
-    <button id='alert'>alert</button>
-  </li>
-  <li>
-    <button id='confirm-modal'>Modal confirm</button>
-    <button id='confirm2'>confirm2</button>
-  </li>
-  <li>
-    <button id='prompt-modal'>Modal prompt</button>
-    <button id='prompt2'>prompt2</button>
-  </li>
-</ul>
+<div id='grid'>
+  <code>alert</code>
+  <button id='alert-modal' class='alert'>Modal</button>
+  <button id='alert-modal-fancy' class='alert'>
+    Modal w/ unescaped html & title</button>
+  <button id='alert' class='alert'>Non-modal</button>
+
+  <code>confirm</code>
+  <button id='confirm-modal' class='confirm'>Modal</button>
+  <button id='confirm2' class='confirm'>Non-modal confirm2</button>
+
+  <code>prompt</code>
+  <button id='prompt-modal' class='prompt'>Modal</button>
+  <button id='prompt2' class='prompt'>Non-modal prompt2</button>
+</div>
 
 <a href='https://github.com/gromnitsky/plain-dialogs'>
   https://github.com/gromnitsky/plain-dialogs
