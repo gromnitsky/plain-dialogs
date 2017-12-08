@@ -60,27 +60,26 @@ export function confirm2(msg, opt) {
 function _prompt(msg, def, opt) {
     let d = Dialog(opt)
     d.node.innerHTML = d.html(`
+<form method='dialog'>
 <div class='${d.css("body")}'><p>
 ${d.opt.escape ? escape(msg) : msg}<br>
-<input style='width: 100%; margin-top: 0.3em;' value='${escape_html(def)}'>
+<input type='text' style='width: 100%; margin-top: 0.3em; box-sizing: border-box;' value='${escape_html(def)}'>
 </p></div>
 <div class='${d.css("footer")}'>
-  <button class='${d.css("btn--cancel")}'>Cancel</button>
-  <button class='${d.css("btn--ok")}'>OK</button>
-</div>`)
+  <input type='button' class='${d.css("btn--cancel")}' value='Cancel'>
+  <input type='submit' class='${d.css("btn--ok")}' value='OK'>
+</div></form`)
 
     let val
     return new Promise( (resolve, reject) => {
 	d.node.querySelector('.'+d.css("btn--cancel")).onclick = () => {
-	    val = null // because dialog#returnValue is always a string
+	    val = null
 	    d.node.close()
 	}
 	d.node.oncancel = () => val = null // modal-only
-	d.node.querySelector('.'+d.css("btn--ok")).onclick = () => {
-	    val = d.node.querySelector('input').value
-	    d.node.close()
-	}
 	d.node.onclose = evt => {
+	    if (val !== null)
+		val = d.node.querySelector('input[type="text"]').value
 	    document.body.removeChild(evt.target)
 	    if (d.opt._promise_always_resolves) {
 		resolve(val)
