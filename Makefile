@@ -4,10 +4,10 @@ mkdir = @mkdir -p $(dir $@)
 
 $(out)/$(pkg.name).js: index.mjs
 	$(mkdir)
-	babel --no-comments --minified --plugins `npm -g root`/babel-plugin-transform-es2015-modules-umd --module-id $(pkg.name) $< -o $@
+	node_modules/.bin/babel $< -o $@ --plugins=@babel/plugin-transform-modules-umd --module-id $(pkg.name) --source-maps --minified
 
 publish: $(out)/$(pkg.name).js
 	npm publish
 
 upload: node_modules
-	rsync -avPL --delete -e ssh node_modules/dialog-polyfill/dialog-polyfill.* test/ gromnitsky@web.sourceforge.net:/home/user-web/gromnitsky/htdocs/js/examples/plain-dialogs/
+	rsync -avPL --delete -e ssh test/ gromnitsky@web.sourceforge.net:/home/user-web/gromnitsky/htdocs/js/examples/plain-dialogs/

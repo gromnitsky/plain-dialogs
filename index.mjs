@@ -9,10 +9,10 @@ export function alert(msg, opt) {
     return new Promise( (resolve, _) => {
 	let btn = d.node.querySelector('button')
 	btn.onclick = () => d.node.close()
-	d.node.onclose = evt => {
+        d.node.addEventListener('close', evt => {
 	    document.body.removeChild(evt.target)
 	    resolve(true)
-	}
+        })
 
 	d.show()
 	btn.focus()
@@ -33,14 +33,14 @@ function _confirm(msg, opt) {
 	btn_cancel.onclick = () => d.node.close()
 	d.node.querySelector('.'+d.css("btn--ok"))
 	    .onclick = () => d.node.close('ok')
-	d.node.onclose = (evt) => {
+        d.node.addEventListener('close', evt => {
 	    document.body.removeChild(evt.target)
 	    if (d.opt._promise_always_resolves) {
 		resolve(evt.target.returnValue === 'ok')
 	    } else {
 		evt.target.returnValue === 'ok' ? resolve(true) : reject(false)
 	    }
-	}
+        })
 
 	btn_cancel.focus()
 	d.show()
@@ -77,7 +77,7 @@ ${d.opt.escape ? escape(msg) : msg}<br>
 	    d.node.close()
 	}
 	d.node.oncancel = () => val = null // modal-only
-	d.node.onclose = evt => {
+        d.node.addEventListener('close', evt => {
 	    if (val !== null)
 		val = d.node.querySelector('input[type="text"]').value
 	    document.body.removeChild(evt.target)
@@ -86,7 +86,7 @@ ${d.opt.escape ? escape(msg) : msg}<br>
 	    } else {
 		val === null ? reject(null) : resolve(val)
 	    }
-	}
+        })
 
 	d.show()
     })

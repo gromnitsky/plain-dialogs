@@ -17,53 +17,10 @@
         "type": "git",
         "url": "git://github.com/gromnitsky/plain-dialogs.git"
     },
-    "eslintConfig": {
-        "parserOptions": {
-            "ecmaVersion": 2017,
-            "sourceType": "module",
-            "ecmaFeatures": {
-                "impliedStrict": true
-            }
-        },
-        "env": {
-            "es6": true,
-            "browser": true,
-            "commonjs": true
-        },
-        "extends": [
-            "eslint:recommended"
-        ],
-        "rules": {
-            "no-console": [
-                "off"
-            ],
-            "no-mixed-spaces-and-tabs": [
-                "off"
-            ],
-            "no-unused-vars": [
-                "warn",
-                {
-                    "argsIgnorePattern": "^_"
-                }
-            ],
-            "eqeqeq": [
-                "error"
-            ],
-            "block-scoped-var": [
-                "warn"
-            ],
-            "default-case": [
-                "error"
-            ],
-            "dot-notation": [
-                "error"
-            ],
-            "no-throw-literal": [
-                "error"
-            ]
-        }
-    },
     "devDependencies": {
-        "dialog-polyfill": "^0.4.9"
+        "@babel/cli": "^7.11.6",
+        "@babel/core": "^7.11.6",
+        "@babel/plugin-transform-modules-umd": "^7.10.4",
+        "dialog-polyfill": "~0.5.3"
     }
 }
