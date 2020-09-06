@@ -19,11 +19,11 @@ plain-dialogs lib; you don't need to initialize anything).
 
 An unstyled modal alert:
 
-![](http://ultraimg.com/images/2017/12/03/nqjW.png)
+![](doc/alert.png)
 
 The same dialog after applying some CSS:
 
-![](http://ultraimg.com/images/2017/12/03/nqja.png)
+![](doc/alert-css.png)
 
 ## Why?
 
